@@ -44,7 +44,7 @@ public class MainActivity extends WearableActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                String url = urlBase + "/question/demo_user";
+                String url = urlBase + "/question/demo_user"; 
 
                 JsonObjectRequest request = new JsonObjectRequest(
                         Request.Method.GET, url, null,
