@@ -29,7 +29,8 @@ public class MainActivity extends WearableActivity {
     private RequestQueue q;
     private LinearLayout root;
     private Context ctx;
-    protected final String urlBase = "http://10.104.109.109:8080/survey/v1/";
+//    protected final String urlBase = "http://10.104.109.109:8080/survey/v1";
+    protected final String urlBase = "http://10.104.111.10:8080/rest/survey/v1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class MainActivity extends WearableActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                String url = urlBase + "question";
+                String url = urlBase + "/question/demo_user";
 
                 JsonObjectRequest request = new JsonObjectRequest(
                         Request.Method.GET, url, null,
@@ -53,6 +54,7 @@ public class MainActivity extends WearableActivity {
                         try {
                             JSONArray answers = response.getJSONArray("Answers");
                             root.removeAllViews();
+                            button.setText("Here you go");
                             attachQuestionText(root, response, ctx);
                             attachAnswerButtons(root, answers, ctx);
                         } catch (JSONException e) {
@@ -62,7 +64,7 @@ public class MainActivity extends WearableActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        error.printStackTrace();
                     }
                 });
 
@@ -83,9 +85,9 @@ public class MainActivity extends WearableActivity {
         root.addView(tvQuestion);
     }
 
-    protected void attachAnswerButtons(LinearLayout root, JSONArray possibleAnswers,
-                                       Context ctx) throws JSONException {
-        for (int i = 0; i<4; i++){
+    protected void attachAnswerButtons(final LinearLayout root, JSONArray possibleAnswers,
+                                       final Context ctx) throws JSONException {
+        for (int i = 0; i<possibleAnswers.length(); i++){
             JSONObject answer = possibleAnswers.getJSONObject(i);
             Button btnAnswer = new Button(ctx);
             btnAnswer.setText(answer.getString("Text"));
@@ -94,11 +96,12 @@ public class MainActivity extends WearableActivity {
 
                 @Override
                 public void onClick(View v) {
-                    String url = urlBase + "answer";
+                    String url = urlBase + "/answer";
                     int answerId = Integer.parseInt(v.getTag().toString());
                     JSONObject body = new JSONObject();
                     try {
-                        body.put("_id", answerId);
+                        body.put("lookupId", answerId);
+                        body.put("username", "demo_user");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -106,8 +109,11 @@ public class MainActivity extends WearableActivity {
                             Request.Method.POST, url, body, new Response.Listener<JSONObject>(){
                         @Override
                         public void onResponse(JSONObject response) {
-                            button.setText("Answered");
-                            button.setBackgroundColor(Color.GREEN);
+                            button.setText("Another?");
+                            root.removeAllViews();
+                            TextView tv = new TextView(ctx);
+                            tv.setText("Thanks!");
+                            root.addView(tv);
                         }
                     }, new Response.ErrorListener(){
                         @Override
