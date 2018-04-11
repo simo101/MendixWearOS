@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "453901272203",
+    "firebase_url": "https://mendixwearos.firebaseio.com",
+    "project_id": "mendixwearos",
+    "storage_bucket": "mendixwearos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453901272203:android:0e3129f4c5a1a213",
+        "android_client_info": {
+          "package_name": "com.example.conner.mendixwearos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453901272203-5g8bsl87j0uab37eals8vd0isq453lev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.conner.mendixwearos",
+            "certificate_hash": "baadc677ef9f10d417216e69ffaa5a5b750c3d92"
+          }
+        },
+        {
+          "client_id": "453901272203-gi6vahp6iu2tkpualo0fkmjch6562lsv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAld6zGhax2d74re9javF1k4nb0MjCUL6c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453901272203-gi6vahp6iu2tkpualo0fkmjch6562lsv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
