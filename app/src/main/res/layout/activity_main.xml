@@ -10,31 +10,53 @@
     tools:context="com.example.conner.mendixwearos.MainActivity"
     tools:deviceIds="wear">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get Question" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Get Question" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    style="@android:style/Widget.Material.Light.ImageButton"
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@color/complicationDrawable_backgroundColor"
+                    android:cropToPadding="false"
+                    android:onClick="onClickShowSettings"
+                    android:paddingTop="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_more_vert_24dp_wht" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/root"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
             </LinearLayout>
 
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.wear.widget.BoxInsetLayout>
 
