@@ -7,7 +7,7 @@ import android.app.Application;
  */
 
 public class MyApplication extends Application {
-    private String baseUrl = "http://10.104.105.6:8080/rest/survey/v1";
+    private String baseUrl = "https://carershuboffline-accp.mendixcloud.com/rest/survey/v1";
     private String userName = "demo_user";
 
     public String getBaseUrl(){
